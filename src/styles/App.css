@@ -1,0 +1,27 @@
+* {
+  font-family: "Barlow", sans-serif;
+}
+
+body {
+  background: linear-gradient(
+    #294d61,
+    #6da5c0,
+    #0f969c,
+    #0c7075,
+    #072e33,
+    #05161a
+  );
+  background-size: 100% 100%;
+  min-height: 100vh;
+  margin: 0;
+  background-repeat: no-repeat;
+}
+
+.weather-app{
+  margin:0 20px
+}
+
+.forecast-summaries{
+  display: flex;
+  justify-content: space-between;
+}
