@@ -17,6 +17,8 @@ function ForecastDetails({ date, temperature, humidity, wind, description }) {
   );
 }
 
+// Common Errors: Failed PropType. None of the props within the forecastDetails are being passed, their value is read as undefined
+
 ForecastDetails.propTypes = {
   date: PropTypes.number.isRequired,
   temperature: PropTypes.shape({
