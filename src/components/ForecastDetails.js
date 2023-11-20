@@ -1,36 +1,49 @@
+/* eslint-disable react/prop-types */
 import PropTypes from "prop-types";
 import React from "react";
 import moment from "moment";
 
-function ForecastDetails({ date, temperature, humidity, wind, description }) {
+function ForecastDetails({ forecasts }) {
   return (
     <div className="forecast-details">
       <h1>Details</h1>
       <div className="forecast-details_date">
-        {moment(date).format("ddd Do MMM")}
+        {moment(forecasts.date).format("ddd Do MMM")}
       </div>
-      <div className="forecast-details_temperature">{temperature}&deg;C</div>
-      <div className="forecast-details_humidity">{humidity}%</div>
-      <div className="forecast-details_wind">{wind}mph</div>
-      <div className="forecast-details_description">{description}</div>
+      <div className="forecast-details_temperature">
+        {" "}
+        Max Temp :{forecasts.temperature.max}&deg;C
+      </div>
+      <div className="forecast-details_temperature">
+        {" "}
+        Min Temp :{forecasts.temperature.min}&deg;C
+      </div>
+      <div className="forecast-details_humidity">
+        Humidity at: {forecasts.humidity}%
+      </div>
+      <div className="forecast-details_wind">
+        Wind Speed at : {forecasts.wind.speed}mph
+      </div>
+      <div className="forecast-details_description">
+        {" "}
+        Weather is :{forecasts.description}
+      </div>
     </div>
   );
 }
 
-// Common Errors: Failed PropType. None of the props within the forecastDetails are being passed, their value is read as undefined
-
 ForecastDetails.propTypes = {
-  date: PropTypes.number.isRequired,
-  temperature: PropTypes.shape({
-    min: PropTypes.number,
-    max: PropTypes.number,
-  }).isRequired,
-  humidity: PropTypes.number.isRequired,
-  wind: PropTypes.shape({
-    speed: PropTypes.number,
-    direction: PropTypes.string,
-  }).isRequired,
-  description: PropTypes.string.isRequired,
+  forecasts: PropTypes.arrayOf(
+    PropTypes.shape({
+      date: PropTypes.number.isRequired,
+      description: PropTypes.string.isRequired,
+      icon: PropTypes.string.isRequired,
+      temperature: PropTypes.shape({
+        min: PropTypes.number,
+        max: PropTypes.number,
+      }).isRequired,
+    }),
+  ).isRequired,
 };
 
 export default ForecastDetails;
