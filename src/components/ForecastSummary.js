@@ -16,10 +16,10 @@ function ForecastSummary({ date, description, icon, temperature }) {
       <div className="forecast-summary__icon" data-testid="forecast-icon">
         <WeatherIcon name="owm" iconId={icon} />
       </div>
+      <div className="forecast-summary_description">{description}</div>
       <div className="forecast-summary_temperature">
         {temperature.max}&deg;C
       </div>
-      <div className="forecast-summary_description">{description}</div>
     </div>
   );
 }

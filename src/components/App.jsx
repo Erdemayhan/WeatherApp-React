@@ -7,6 +7,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import LocationDetails from "./locationDetails";
 import ForecastSummaries from "./ForecastSummaries";
+import ForecastDetails from "./ForecastDetails";
 
 function App(props) {
   const { forecasts, location } = props;
@@ -15,17 +16,10 @@ function App(props) {
     <div className="weather-app">
       <LocationDetails city={location.city} country={location.country} />
       <ForecastSummaries forecasts={forecasts} />
+      <ForecastDetails forecasts={forecasts[0]} />
     </div>
   );
 }
-
-App.propTypes = {
-  // propType validation for location
-  location: PropTypes.shape({
-    city: PropTypes.string,
-    country: PropTypes.string,
-  }).isRequired,
-};
 
 App.propTypes = {
   // propType validation for forecasts data
