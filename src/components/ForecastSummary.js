@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 import WeatherIcon from "react-icons-weather";
 import moment from "moment";
 
-function ForecastSummary({ date, description, icon, temperature }) {
+function ForecastSummary({ date, description, icon, temperature, onSelect }) {
   return (
     <div className="forecast-summary">
       <h1>Forecast</h1>
@@ -20,12 +20,16 @@ function ForecastSummary({ date, description, icon, temperature }) {
       <div className="forecast-summary_temperature">
         {temperature.max}&deg;C
       </div>
+      <button type="button" onClick={() => onSelect(date)}>
+        More Details
+      </button>
     </div>
   );
 }
 
 ForecastSummary.propTypes = {
   date: PropTypes.number.isRequired,
+  onSelect: PropTypes.func.isRequired,
   description: PropTypes.string.isRequired,
   icon: PropTypes.string.isRequired,
   temperature: PropTypes.shape({

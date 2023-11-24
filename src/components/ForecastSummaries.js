@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import ForecastSummary from "./ForecastSummary";
 import "../styles/App.css";
 
-function ForecastSummaries({ forecasts }) {
+function ForecastSummaries({ forecasts, onForecastSelect }) {
   return (
     // eslint-disable-next-line react/react-in-jsx-scope
     <div className="forecast-summaries">
@@ -13,9 +13,10 @@ function ForecastSummaries({ forecasts }) {
           <ForecastSummary
             key={forecast.date}
             date={forecast.date}
-            icon={forecast.icon}
+            icon={forecast.icon.toString()}
             temperature={forecast.temperature}
             description={forecast.description}
+            onSelect={onForecastSelect}
           />
         );
       })}
@@ -30,11 +31,12 @@ ForecastSummaries.propTypes = {
     PropTypes.shape({
       date: PropTypes.number.isRequired,
       description: PropTypes.string.isRequired,
-      icon: PropTypes.string.isRequired,
+      icon: PropTypes.number.isRequired,
       temperature: PropTypes.shape({
         min: PropTypes.number,
         max: PropTypes.number,
       }).isRequired,
     }),
   ).isRequired,
+  onForecastSelect: PropTypes.func.isRequired,
 };
